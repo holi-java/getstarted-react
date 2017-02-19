@@ -19,6 +19,19 @@ test('default property', function () {
     Toy.defaultProps = {
         value: 'bar'
     };
-    let toy = <Toy/>
+    let toy = <Toy/>;
     expect(toy.props).toEqual({value: 'bar'});
+});
+
+
+test('validator', function (done) {
+    Toy.propTypes = {name: React.PropTypes.string};
+
+    //validator errors only warning in console
+    console.error = (message) => {
+        expect(message).toMatch(/`name`/);
+        done();
+    };
+
+    <Toy name={true}/>;
 });

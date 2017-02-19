@@ -1,10 +1,17 @@
 import Toy from './stub/Toy';
 
-let props;
+let defaultProps, propTypes;
+let consoleSnapshot;
 beforeEach(() => {
-    props = Object.assign({}, Toy.defaultProps);
+    defaultProps = Object.assign({}, Toy.defaultProps);
+    propTypes = Object.assign({}, Toy.propTypes);
+    consoleSnapshot = Object.assign({}, console);
 });
 
 afterEach(() => {
-    Toy.defaultProps = props;
+    Object.assign(Toy, {
+        defaultProps: defaultProps,
+        propTypes: propTypes
+    });
+    Object.assign(console, consoleSnapshot);
 });
