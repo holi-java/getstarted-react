@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "node $NODE_DEBUG_OPTION ./node_modules/jest/bin/jest.js"
   },
   "keywords": [],
   "author": "",
