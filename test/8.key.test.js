@@ -1,4 +1,5 @@
 import React from 'react';
+import './bootstrap';
 
 test("props `key` can't be read,used by React only", function (done) {
     console.error = (message) => {
