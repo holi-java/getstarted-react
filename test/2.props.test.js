@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Toy from './stub/Toy';
-
+import env from './bootstrap';
 test('without props', () => {
     let toy = <Toy/>;
 
@@ -19,7 +19,6 @@ test('default property', function () {
     Toy.defaultProps = {
         value: 'bar'
     };
-
     let toy = <Toy/>
     expect(toy.props).toEqual({value: 'bar'});
 });
