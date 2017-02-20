@@ -1,5 +1,6 @@
 import React from 'react';
 import './bootstrap';
+import {shallow, mount} from 'enzyme';
 
 test("props `key` can't be read,used by React only", function (done) {
     console.error = (message) => {
@@ -13,11 +14,16 @@ test("props `key` can't be read,used by React only", function (done) {
     expect(key).toBeUndefined();
 });
 
-test("list items must provide a unique key", function () {
+test("list items must provide a unique key,tell the React which element should be update", function (done) {
+    console.error = (message) => {
+        expect(message).toMatch(/Each child in an array or iterator should have a unique "key" prop/);
+        done();
+    };
+
     let list = (
         <ul>
-            <li>1</li>
-            <li>2</li>
+            {[1, 2, 3].map((v) => <li>{v}</li>)}
         </ul>
     );
+
 });
