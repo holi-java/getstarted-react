@@ -1,17 +1,28 @@
-import React, {Component} from 'react';
-import {shallow} from 'enzyme';
+import React, {Component} from "react";
+import {mount} from "enzyme";
 
-class Foo extends Component {
-    render() {
-        return <div ref={(div) => this.div = div}></div>
-    }
-}
 
 test('ref child element in parent Component', () => {
-    let foo = shallow(<Foo/>);
+    class Foo extends Component {
+        render() {
+            return (<div id="foo" ref={(div) => this.div = div}/>);
+        }
+    }
 
-    expect(foo.div).toBe(foo.props().children);
+    let foo = mount(<Foo/>);
 
-    foo.unmount();
-    expect(foo.div).toBeUndefined();
+    expect(foo.wrap(foo.instance().div).prop('id')).toBe('foo');
+});
+
+
+test('ref with name', () => {
+    class Bar extends Component {
+        render() {
+            return <div id="bar" ref='foo'/>
+        }
+    }
+
+    let bar = mount(<Bar/>);
+
+    expect(bar.ref('foo').prop('id')).toBe('bar');
 });
