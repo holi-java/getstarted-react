@@ -1,5 +1,5 @@
 {
-  "name": "react",
+  "name": "getstarted-react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,7 +19,9 @@
     "babel-preset-stage-0": "^6.22.0",
     "enzyme": "^2.7.1",
     "jest": "^18.1.0",
+    "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-test-renderer": "^15.4.2"
   },
   "jest": {
