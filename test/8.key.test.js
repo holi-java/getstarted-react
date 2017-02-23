@@ -1,5 +1,4 @@
 import React from 'react';
-import './bootstrap';
 import {shallow, mount} from 'enzyme';
 
 test("props `key` can't be read,used by React only", function (done) {

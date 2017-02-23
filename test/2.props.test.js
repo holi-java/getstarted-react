@@ -1,4 +1,3 @@
-import env from './bootstrap';
 import React, {Component} from 'react';
 import Toy from './stub/Toy';
 test('without props', () => {
