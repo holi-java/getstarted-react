@@ -1,6 +1,6 @@
+import env from './bootstrap';
 import React, {Component} from 'react';
 import Toy from './stub/Toy';
-import env from './bootstrap';
 test('without props', () => {
     let toy = <Toy/>;
 
@@ -34,4 +34,12 @@ test('validator', function (done) {
     };
 
     <Toy name={true}/>;
+});
+
+test('spread props into Component', () => {
+    const props = {foo: 'bar', fuzz: 'buzz'};
+
+    let toy = <Toy {...props}/>
+
+    expect(toy.props).toEqual(props);
 });
