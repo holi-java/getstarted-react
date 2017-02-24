@@ -25,6 +25,13 @@ test("set unknown property in a dom element starts with `data-`  is ok", () => {
 });
 
 
+test("set dynamic property starts with data- will be transformed to lowercase form", () => {
+    let dom = render(<div><div data-onClick="true"/></div>);
+
+    expect(dom.innerHTML).toEqual('<div data-onclick=\"true\"></div>');
+});
+
+
 test("unknown property in a Component without an upper case will be stripped but without warning", () => {
     class foo extends Component {
         render() {
