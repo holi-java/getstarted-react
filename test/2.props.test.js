@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {renderIntoDocument as render}from 'react-addons-test-utils';
 import Toy from './stub/Toy';
 test('without props', () => {
     let toy = <Toy/>;
@@ -41,4 +42,13 @@ test('spread props into Component', () => {
     let toy = <Toy {...props}/>
 
     expect(toy.props).toEqual(props);
+});
+
+
+test("can't set object props into DOM Element", () => {
+    const value = {foo: 'bar', fuzz: 'buzz'};
+
+    let div = render(<div><span value={value}/></div>);
+
+    expect(div.innerHTML).toEqual('<span value="[object Object]"></span>');
 });
