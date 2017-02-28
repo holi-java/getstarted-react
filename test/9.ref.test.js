@@ -16,13 +16,33 @@ test('ref by callback', () => {
 
 
 test('ref by name', () => {
-    class Bar extends Component {
-        render() {
-            return <div id="bar" ref='foo'/>
-        }
-    }
+    let dom = mount(<RefDOMElement/>);
 
-    let bar = mount(<Bar/>);
-
-    expect(bar.ref('foo').prop('id')).toBe('bar');
+    expect(dom.instance().refs.content.innerHTML).toBe('foo');
 });
+
+
+test('ref a DOM element', () => {
+    let dom = mount(<RefDOMElement/>);
+
+    expect(dom.instance().refs.content.innerHTML).toBe('foo');
+});
+
+test('ref a Component', () => {
+    let dom = mount(<RefComponent/>);
+
+    expect(dom.instance().refs.component).toEqual(expect.any(RefDOMElement));
+});
+
+
+class RefDOMElement extends Component{
+    render(){
+        return <div><div ref="content">foo</div></div>;
+    }
+}
+
+class RefComponent extends Component{
+    render(){
+        return <div><RefDOMElement ref="component"/></div>;
+    }
+}
