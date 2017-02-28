@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {mount} from "enzyme";
 
 
-test('ref child element in parent Component', () => {
+test('ref by callback', () => {
     class Foo extends Component {
         render() {
             return (<div id="foo" ref={(div) => this.div = div}/>);
@@ -15,7 +15,7 @@ test('ref child element in parent Component', () => {
 });
 
 
-test('ref with name', () => {
+test('ref by name', () => {
     class Bar extends Component {
         render() {
             return <div id="bar" ref='foo'/>
